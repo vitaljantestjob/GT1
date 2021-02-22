@@ -3,6 +3,12 @@
 <ul>
   <?
     foreach($table as $row) {
+      $info = '';
+      if (is_array($row['request_info'])) {
+        foreach($row['request_info'] as $val) {
+          $info .= $val->name.": ".$val->value.";";
+        }
+      }
       echo "
         <li>
           <span>
@@ -18,7 +24,7 @@
             {$row['date']}
           </span>
           <span>
-            {$row['request_info'][0]->name}
+            {$info}
           </span>
         </li>
         ";

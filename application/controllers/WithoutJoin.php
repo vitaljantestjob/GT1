@@ -1,9 +1,8 @@
 <?php
 	class WithoutJoin extends CI_Controller {
 
-  function req_info_parse($str) {
-    print_r(json_decode($str));
-    return json_decode($str);
+  function req_info_parse($val) {
+    return json_decode($val);
   }
 
 	public function view($page = 'without_join')
@@ -23,15 +22,20 @@
     foreach ($requests as $item) {
       $buyer_name = 'undefined buyer';
       foreach ($buyers as $buyer) {
-        if ($buyer->buyer_id == $item->buyer_id) $buyer_name = $buyer->name;
+        if ($buyer->buyer_id == $item->buyer_id) {
+          $buyer_name = $buyer->name;
+          break;
+        }
       }
 
       $request_info = '';
       foreach ($requests_info as $request) {
-        if ($request->request_id == $item->request_id) $request_info = $request->info;
+        if ($request->request_id == $item->request_id) {
+          $request_info = $request->info;
+          break;
+        }
       }
-      $request_info = $request_info == '' ? 'undefined request info' : $this->req_info_parse($request_info);
-      $res[] = ['request_id' => $item->request_id, 'sum' => $item->sum, 'date' => $item->date, 'buyer_name' => $buyer_name, 'request_info' => $request_info];
+      $res[] = ['request_id' => $item->request_id, 'sum' => $item->sum, 'date' => $item->date, 'buyer_name' => $buyer_name, 'request_info' => $this->req_info_parse($request_info)];
     }
 
     $data['table'] = $res;
