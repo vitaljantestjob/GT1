@@ -13,6 +13,7 @@
     }
 
     $this->load->model('Withoutjoin_model');
+    $this->load->helper('html');
 
     $buyers = $this->Withoutjoin_model->db_get('buyers');
     $requests = $this->Withoutjoin_model->db_get('requests');
@@ -40,6 +41,7 @@
 
     $data['table'] = $res;
     $data['title'] = "Without join";
+    // $data['style'] = link_tag('css/styles.css');
 
     $this->load->view('templates/header', $data);
     $this->load->view('pages/'.$page, $data);

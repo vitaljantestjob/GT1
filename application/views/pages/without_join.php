@@ -6,24 +6,24 @@
       $info = '';
       if (is_array($row['request_info'])) {
         foreach($row['request_info'] as $val) {
-          $info .= $val->name.": ".$val->value.";";
+          $info .= $val->name.": ".$val->value."; ";
         }
       }
       echo "
         <li>
-          <span>
+          <span class='width0'>
             {$row['request_id']}
           </span>
-          <span>
+          <span class='width1'>
             {$row['buyer_name']}
           </span>
-          <span>
+          <span class='width1'>
             {$row['sum']}
           </span>
-          <span>
+          <span class='width1'>
             {$row['date']}
           </span>
-          <span>
+          <span class='width2'>
             {$info}
           </span>
         </li>

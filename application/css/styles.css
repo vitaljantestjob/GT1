@@ -1,0 +1,25 @@
+li {
+  width: 90%;
+  list-style-type: none;
+  margin-bottom: 5px;
+}
+
+li span {
+  background-color: #cfcdcd;
+  display: inline-block;
+  padding: 5px;
+  margin-right: 5px;
+}
+
+li .width0 {
+  width: 5%;
+}
+
+li .width1 {
+  width: 10%;
+}
+
+li .width2 {
+  width: 15%;
+}
+/*# sourceMappingURL=styles.css.map */
