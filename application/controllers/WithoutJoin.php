@@ -1,10 +1,6 @@
 <?php
 	class WithoutJoin extends CI_Controller {
 
-  function req_info_parse($val) {
-    return json_decode($val);
-  }
-
 	public function view($page = 'without_join')
 	{
     if ( ! file_exists(APPPATH.'/views/pages/'.$page.'.php'))
@@ -13,7 +9,6 @@
     }
 
     $this->load->model('Withoutjoin_model');
-    $this->load->helper('html');
 
     $buyers = $this->Withoutjoin_model->db_get('buyers');
     $requests = $this->Withoutjoin_model->db_get('requests');
@@ -36,12 +31,12 @@
           break;
         }
       }
-      $res[] = ['request_id' => $item->request_id, 'sum' => $item->sum, 'date' => $item->date, 'buyer_name' => $buyer_name, 'request_info' => $this->req_info_parse($request_info)];
+      $res[] = ['request_id' => $item->request_id, 'sum' => $item->sum, 'date' => $item->date, 'buyer_name' => $buyer_name, 'request_info' => json_decode($request_info)];
     }
 
     $data['table'] = $res;
     $data['title'] = "Without join";
-    // $data['style'] = link_tag('css/styles.css');
+    $data['home'] = '+';
 
     $this->load->view('templates/header', $data);
     $this->load->view('pages/'.$page, $data);

@@ -1,4 +1,3 @@
-<h1>Request WITHOUT Join</h1>
 <h2>Requests list:</h2>
 <ul>
   <?
@@ -24,7 +23,7 @@
             {$row['date']}
           </span>
           <span class='width2'>
-            {$info}
+            {$info}&nbsp;
           </span>
         </li>
         ";
